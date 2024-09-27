@@ -7,6 +7,8 @@ const loader = loading("Sedang memproses...");
 
 const account = new BankAccount();
 
+
+// Main function
 export async function main() {
   console.clear();
   try {
@@ -54,6 +56,8 @@ export async function main() {
         break;
     }
 
+
+    // Loop the question
     await loopQuestion();
   } catch (err) {
     console.clear();
@@ -66,6 +70,7 @@ export async function main() {
 
     console.log(err);
 
+    // Loop the question
     await loopQuestion();
   }
 }

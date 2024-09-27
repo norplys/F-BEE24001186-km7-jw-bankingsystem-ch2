@@ -34,10 +34,15 @@ export class BankAccount {
       });
     }
 
+    #privateGetSaldo() {
+      return this.saldo;
+    }
+
+    // Get your saldo
     getSaldo(){
-      return new Promise((resolve, _reject) => {
+      return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve(`Saldo anda saat ini: ${this.saldo}`);
+          resolve(this.#privateGetSaldo());
         }, 3000);
       });
     }
