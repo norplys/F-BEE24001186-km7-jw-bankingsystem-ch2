@@ -1,0 +1,17 @@
+{
+  "name": "challange-02",
+  "version": "1.0.0",
+  "main": "banking_system.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node banking_system.js"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@inquirer/prompts": "^6.0.1",
+    "loading-cli": "^1.1.2"
+  }
+}
