@@ -1,3 +1,4 @@
+-- Migration up
 CREATE TABLE Nasabah (
     nasabah_id SERIAL PRIMARY KEY,
     nama VARCHAR(100) NOT NULL,
@@ -19,3 +20,10 @@ CREATE TABLE Transaksi (
     jumlah DECIMAL(15, 2) NOT NULL,
     FOREIGN KEY (akun_id) REFERENCES Akun(akun_id)
 );
+
+-- Migration down
+DROP TABLE IF EXISTS Transaksi;
+
+DROP TABLE IF EXISTS Akun;
+
+DROP TABLE IF EXISTS Nasabah;
