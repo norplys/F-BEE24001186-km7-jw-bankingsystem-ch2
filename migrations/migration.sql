@@ -1,3 +1,4 @@
+-- Ensure the database is created before running this migration
 -- Migration up
 CREATE TABLE Nasabah (
     nasabah_id SERIAL PRIMARY KEY,
@@ -22,8 +23,8 @@ CREATE TABLE Transaksi (
 );
 
 -- Migration down
-DROP TABLE IF EXISTS Transaksi;
+-- DROP TABLE IF EXISTS Transaksi;
 
-DROP TABLE IF EXISTS Akun;
+-- DROP TABLE IF EXISTS Akun;
 
-DROP TABLE IF EXISTS Nasabah;
+-- DROP TABLE IF EXISTS Nasabah;
