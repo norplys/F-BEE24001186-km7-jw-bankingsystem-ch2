@@ -13,8 +13,8 @@ export async function createTransaction(req, res) {
             await accountService.updateAccountById(account.id, { balance : account.balance - amount }, transaction);
             await accountService.updateAccountById(destAccount.id, { balance: destAccount.balance + amount }, transaction);
             const transactionPayload = {
-                sourceAccountId: account.userId,
-                destinationAccountId: destAccount.userId,
+                sourceAccountId: account.id,
+                destinationAccountId: destAccount.id,
                 amount,
             };
             const transactionData = await transactionService.createTransaction(transactionPayload, transaction);

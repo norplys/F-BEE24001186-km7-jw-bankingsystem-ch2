@@ -1,22 +1,16 @@
-import express, { json } from "express";
-import accounts from "./routes/accounts.js";
-import users from "./routes/users.js";
-import transactions from "./routes/transactions.js";
-import profiles from "./routes/profiles.js";
+import express, { json, Router } from "express";
+import routes from "./routes/index.js";
 
-async function main(){
-    const app = express();
-    const port = 3000;
-    app.use(json());
-    
-    accounts(app);
-    users(app);
-    transactions(app);
-    profiles(app);
+async function main() {
+  const app = express();
+  const port = 3000;
+  app.use(json());
 
-    app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
-    });
+  routes(app);
+
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
 }
 
 main();

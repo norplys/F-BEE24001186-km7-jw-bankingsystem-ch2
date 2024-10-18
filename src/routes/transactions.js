@@ -7,7 +7,7 @@ import * as commonValidationMiddleware from "../middlewares/validation/common.js
 
 export default (app) => {
   const router = Router();
-  app.use("/v1/transactions", router);
+  app.use("/transactions", router);
 
   router.post(
     "/",

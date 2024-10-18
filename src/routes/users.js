@@ -6,7 +6,7 @@ import * as userMiddleware from "../middlewares/user.js";
 
 export default (app) => {
   const router = Router();
-  app.use("/v1/users", router);
+  app.use("/users", router);
 
   router.post(
     "/",

@@ -5,7 +5,7 @@ import * as profileController from "../controllers/profile.js";
 
 export default (app) => {
   const router = Router();
-  app.use("/v1/profiles", router);
+  app.use("/profiles", router);
 
   router.put(
     "/",
