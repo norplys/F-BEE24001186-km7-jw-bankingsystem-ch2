@@ -43,3 +43,26 @@ export async function checkDestinationAccountExist(req, res, next) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export async function checkAccountExistByUserIdAndAccountNumber(req, res, next) {
+    const { accountNumber } = req.body;
+    const service = new AccountService();
+    const userId = res.locals.user.id;
+  
+    try {
+      const account = await service.getAccountByUserIdAndAccountNumber(
+        userId,
+        accountNumber
+      );
+  
+      if (!account) {
+        return res.status(404).json({ message: "Account doesn't exist" });
+      }
+  
+      res.locals.account = account;
+  
+      next();
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }

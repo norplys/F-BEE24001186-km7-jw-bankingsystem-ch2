@@ -8,7 +8,7 @@ export async function blockIfEmailExists(req, res, next) {
     const user = await service.getUserByEmail(email);
 
     if (user) {
-      return res.status(400).json({ message: "Email already exists" });
+      return res.status(403).json({ message: "Email already exists" });
     }
 
     next();
