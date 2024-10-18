@@ -33,3 +33,42 @@ export async function createTransaction(req, res) {
         });
     }
 }
+
+export async function getTransactionById(_req, res) {
+    const id = res.locals.id;
+    const service = new TransactionService();
+
+    try {
+        const transaction = await service.getTransactionById(id);
+
+        if (!transaction) {
+            return res.status(404).json({
+                error: "Transaction not found",
+            });
+        }
+
+        res.status(200).json({
+            data: transaction,
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error.message,
+        });
+    }
+}
+
+export async function getAllTransaction(_req, res) {
+    const service = new TransactionService();
+
+    try {
+        const transactions = await service.getAllTransaction();
+
+        res.status(200).json({
+            data: transactions,
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error.message,
+        });
+    }
+}

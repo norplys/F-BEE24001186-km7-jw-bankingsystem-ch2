@@ -6,7 +6,7 @@ export function createTransaction(data, transaction) {
     });
 }
 
-export function getTransactions() {
+export function getAllTransactions() {
     return prisma.transaction.findMany();
 }
 

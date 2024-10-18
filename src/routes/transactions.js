@@ -22,11 +22,11 @@ export default (app) => {
 
   );
 
-//   router.get(
-//     "/:id",
-//     commonValidationMiddleware.validateParamsId,
-//     accountController.getAccountById
-//   );
+  router.get(
+    "/",
+    commonValidationMiddleware.validateParamsId,
+    transactionController.getAllTransaction
+  );
 
-//   router.get("/", accountController.getAllAccount);
+  router.get("/:id", transactionController.getTransactionById);
 };
