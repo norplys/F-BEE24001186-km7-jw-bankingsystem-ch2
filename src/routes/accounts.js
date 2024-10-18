@@ -16,6 +16,4 @@ export default (app) => {
         // res.json({ message: "Account updated" });
     }
     );
-
-
 }

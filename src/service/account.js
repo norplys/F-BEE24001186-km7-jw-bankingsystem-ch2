@@ -1,3 +1,5 @@
+import * as accountRepository from "../repository/account.js";
+
 export class BankAccount {
     constructor() {
       this.saldo = 0;
@@ -5,16 +7,7 @@ export class BankAccount {
 
     // Add your saldo, if value is negative, reject with message "Angka harus positif"
     deposit(value) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (value < 0) {
-            reject("Angka harus positif");
-          } else {
-            this.saldo += value;
-            resolve(`Saldo berhasil ditambahkan, Saldo sekarang: ${this.saldo}`);
-          }
-        }, 3000);
-      });
+      
     }
     
     // Withdraw your saldo, if value is negative, reject with message "Angka harus positif"
