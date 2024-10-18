@@ -74,3 +74,20 @@ export async function getAllTransaction(_req, res) {
         });
     }
 }
+
+export async function deleteTransaction(_req, res) {
+    const id = res.locals.id;
+    const service = new TransactionService();
+
+    try {
+        await service.deleteTransaction(id);
+
+        res.status(200).json({
+            message: "Transaction deleted successfully",
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message,
+        });
+    }
+}

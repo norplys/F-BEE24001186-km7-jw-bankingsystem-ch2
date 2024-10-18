@@ -15,4 +15,9 @@ export class TransactionService {
         const transactions = await transactionRepository.getAllTransactions();
         return transactions;
     }
+
+    async deleteTransaction(id) {
+        const transaction = await transactionRepository.deleteTransaction(id);
+        return transaction;
+    }
 }

@@ -21,3 +21,11 @@ export function getTransactionById(id) {
         }
     });
 }
+
+export function deleteTransaction(id) {
+    return prisma.transaction.delete({
+        where: {
+            id,
+        },
+    });
+}
