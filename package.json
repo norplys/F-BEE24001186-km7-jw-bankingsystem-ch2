@@ -4,7 +4,10 @@
   "main": "banking_system.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node banking_system.js"
+    "start": "nodemon ./src/index.js",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
+    "db:reset": "prisma migrate reset --force"
   },
   "author": "",
   "type": "module",
@@ -12,6 +15,14 @@
   "description": "",
   "dependencies": {
     "@inquirer/prompts": "^6.0.1",
-    "loading-cli": "^1.1.2"
+    "@prisma/client": "^5.21.1",
+    "express": "^4.21.1",
+    "joi": "^17.13.3",
+    "loading-cli": "^1.1.2",
+    "nodemon": "^3.1.7",
+    "prisma": "^5.21.1"
+  },
+  "prisma": {
+    "schema": "./src/utils/prisma/schema.prisma"
   }
 }
