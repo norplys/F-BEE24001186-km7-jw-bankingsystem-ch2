@@ -1,20 +1,23 @@
 import { Router } from "express";
 import * as userValidationMiddleware from "../middlewares/validation/user.js";
+import * as commonValidationMiddleware from "../middlewares/validation/common.js";
+import * as userController from "../controllers/user.js";
 
 export default (app) => {
-    const router = Router();
-    app.use("/v1/users", router);
-    
-    router.get("/", async (req, res) => {
-        const query = "SELECT * FROM accounts";
-        const result = await client.query(query);
-        res.json(result.rows);
-    });
+  const router = Router();
+  app.use("/v1/users", router);
 
-    router.put("/:id", async (req, res) => {
-        const { id } = req.params;
-        const { balance } = req.body;
-        // res.json({ message: "Account updated" });
-    }
-    );
-}
+  router.post(
+    "/",
+    userValidationMiddleware.createUserValidation,
+    userController.createUser
+  );
+
+  router.get("/", userController.getAllUser);
+
+  router.get(
+    "/:id",
+    commonValidationMiddleware.validateParamsId,
+    userController.getUserById
+  );
+};

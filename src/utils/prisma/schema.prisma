@@ -29,8 +29,8 @@ model Profile {
 model BankAccount {
   id                Int    @id @default(autoincrement())
   bankName          String @map("bank_name")
-  bankAccountNumber String @map("bank_account_number")
-  balance           Float
+  bankAccountNumber String @map("bank_account_number") @unique
+  balance           Float   @default(0)
 
   userId  Int           @map("user_id")
   user    User          @relation(fields: [userId], references: [id])

@@ -1,19 +1,27 @@
 import { Router } from "express";
+import * as accountValidationMiddleware from "../middlewares/validation/account.js";
+import * as userMiddleware from "../middlewares/user.js";
+import * as authMiddleware from "../middlewares/auth.js";
+import * as accountController from "../controllers/account.js";
+import * as commonValidationMiddleware from "../middlewares/validation/common.js";
 
 export default (app) => {
-    const router = Router();
-    app.use("/account", router);
-    
-    router.get("/", async (req, res) => {
-        const query = "SELECT * FROM accounts";
-        const result = await client.query(query);
-        res.json(result.rows);
-    });
+  const router = Router();
+  app.use("/v1/accounts", router);
 
-    router.put("/:id", async (req, res) => {
-        const { id } = req.params;
-        const { balance } = req.body;
-        // res.json({ message: "Account updated" });
-    }
-    );
-}
+  router.post(
+    "/",
+    accountValidationMiddleware.createAccountValidation,
+    userMiddleware.checkUserExistsByEmail,
+    authMiddleware.comparePassword,
+    accountController.createAccount
+  );
+
+  router.get(
+    "/:id",
+    commonValidationMiddleware.validateParamsId,
+    accountController.getAccountById
+  );
+
+  router.get("/", accountController.getAllAccount);
+};
