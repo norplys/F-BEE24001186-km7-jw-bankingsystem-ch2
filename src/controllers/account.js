@@ -17,8 +17,7 @@ export async function createAccount(req, res) {
         const account = await service.createAccount({bankName, id: user.id, bankAccountNumber });
         res.status(201).json(account);
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ message: "Internal server error" });
     }
 }
 
@@ -41,7 +40,7 @@ export async function getAccountById(_req, res) {
         });
     } catch (error) {
         res.status(500).json({
-            error: error.message,
+            message: error.message,
         });
     }
 }
@@ -58,7 +57,7 @@ export async function getAllAccount(_req, res) {
         });
     } catch (error) {
         res.status(500).json({
-            error: error.message,
+            message: error.message,
         });
     }
 }

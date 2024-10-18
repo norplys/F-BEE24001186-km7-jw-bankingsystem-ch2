@@ -14,19 +14,17 @@ export default (app) => {
   router.post(
     "/",
     transactionValidationMiddleware.createTransactionValidation,
-    userMiddleware.checkUserExistsByEmail,
-    authMiddleware.comparePassword,
+    authMiddleware.isAuthorized,
     accountMiddleware.checkSourceAccountExist,
     accountMiddleware.checkDestinationAccountExist,
     transactionController.createTransaction
-
   );
+
+  router.get("/", transactionController.getAllTransaction);
 
   router.get(
-    "/",
+    "/:id",
     commonValidationMiddleware.validateParamsId,
-    transactionController.getAllTransaction
+    transactionController.getTransactionById
   );
-
-  router.get("/:id", transactionController.getTransactionById);
 };

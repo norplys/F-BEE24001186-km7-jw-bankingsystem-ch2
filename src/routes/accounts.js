@@ -12,8 +12,7 @@ export default (app) => {
   router.post(
     "/",
     accountValidationMiddleware.createAccountValidation,
-    userMiddleware.checkUserExistsByEmail,
-    authMiddleware.comparePassword,
+    authMiddleware.isAuthorized,
     accountController.createAccount
   );
 

@@ -29,7 +29,7 @@ export async function createTransaction(req, res) {
     }
     catch(error){
         res.status(500).json({
-            error: error.message
+            message: error.message
         });
     }
 }
@@ -42,9 +42,10 @@ export async function getTransactionById(_req, res) {
         const transaction = await service.getTransactionById(id);
 
         if (!transaction) {
-            return res.status(404).json({
-                error: "Transaction not found",
+            res.status(404).json({
+                message: "Transaction not found",
             });
+            return;
         }
 
         res.status(200).json({
@@ -52,7 +53,7 @@ export async function getTransactionById(_req, res) {
         });
     } catch (error) {
         res.status(500).json({
-            error: error.message,
+            message: error.message,
         });
     }
 }
@@ -61,14 +62,15 @@ export async function getAllTransaction(_req, res) {
     const service = new TransactionService();
 
     try {
-        const transactions = await service.getAllTransaction();
+        const transactions = await service.getAllTransactions();
 
         res.status(200).json({
+            message: "Transactions retrieved successfully",
             data: transactions,
         });
     } catch (error) {
         res.status(500).json({
-            error: error.message,
+            message: error.message,
         });
     }
 }

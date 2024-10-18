@@ -2,7 +2,18 @@ import { prisma } from "../utils/db.js";
 
 export function createUser(data) {
   return prisma.user.create({
-    data,
+    data: {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      profile: {
+        create: {
+          identityType: data.identityType,
+          identityNumber: data.identityNumber,
+          address: data.address,
+        },
+      },
+    },
   });
 }
 
@@ -15,6 +26,9 @@ export function getUserById(id) {
     where: {
       id,
     },
+    include:{
+      profile: true,
+    }
   });
 }
 

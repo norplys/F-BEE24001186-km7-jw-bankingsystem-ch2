@@ -1,11 +1,11 @@
 import { UserService } from "../services/user.js";
 
 export async function createUser(req, res) {
-  const { name, email, password } = req.body;
+  const payload = req.body;
   const service = new UserService();
 
   try {
-    const user = await service.createUser({ name, email, password });
+    const user = await service.createUser(payload);
 
     res.status(201).json({
       message: "User created successfully",
@@ -13,7 +13,7 @@ export async function createUser(req, res) {
     });
   } catch (error) {
     res.status(500).json({
-      error: error.message,
+      message: error.message,
     });
   }
 }
@@ -29,7 +29,7 @@ export async function getAllUser(_req, res) {
     });
   } catch (error) {
     res.status(500).json({
-      error: error.message,
+      message: error.message,
     });
   }
 }
@@ -43,7 +43,7 @@ export async function getUserById(_req, res) {
 
     if (!user) {
       return res.status(404).json({
-        error: "User not found",
+        message: "User not found",
       });
     }
 
@@ -52,7 +52,7 @@ export async function getUserById(_req, res) {
     });
   } catch (error) {
     res.status(500).json({
-      error: error.message,
+      message: error.message,
     });
   }
 }

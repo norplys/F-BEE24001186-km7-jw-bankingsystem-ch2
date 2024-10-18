@@ -2,6 +2,7 @@ import { Router } from "express";
 import * as userValidationMiddleware from "../middlewares/validation/user.js";
 import * as commonValidationMiddleware from "../middlewares/validation/common.js";
 import * as userController from "../controllers/user.js";
+import * as userMiddleware from "../middlewares/user.js";
 
 export default (app) => {
   const router = Router();
@@ -10,6 +11,7 @@ export default (app) => {
   router.post(
     "/",
     userValidationMiddleware.createUserValidation,
+    userMiddleware.blockIfEmailExists,
     userController.createUser
   );
 

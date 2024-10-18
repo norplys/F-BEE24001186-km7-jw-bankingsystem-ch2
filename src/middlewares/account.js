@@ -8,18 +8,18 @@ export async function checkSourceAccountExist(req, res, next) {
         const account = await service.getAccountByAccountNumber(sourceAccountNumber);
     
         if (!account) {
-        return res.status(404).json({ error: "Source account doesn't exist" });
+        return res.status(404).json({ message: "Source account doesn't exist" });
         }
 
         if (account.balance < req.body.amount) {
-            return res.status(400).json({ error: "Insufficient balance" });
+            return res.status(400).json({ message: "Insufficient balance" });
         }
     
         res.locals.account = account;
     
         next();
     } catch (error) {
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ message: "Internal server error" });
     }
 }
 
@@ -33,13 +33,13 @@ export async function checkDestinationAccountExist(req, res, next) {
     if (!account) {
       return res
         .status(404)
-        .json({ error: "Destination account doesn't exist" });
+        .json({ message: "Destination account doesn't exist" });
     }
 
     res.locals.destAccount = account;
 
     next();
   } catch (error) {
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
 }
