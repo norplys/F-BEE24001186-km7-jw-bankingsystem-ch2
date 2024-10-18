@@ -21,3 +21,26 @@ export async function createAccountValidation(req, res, next) {
     res.status(500).json({ error: "Internal server error" });
   }
 }
+
+const amountSchema = Joi.object({
+  amount: Joi.number().required().positive(),
+  accountNumber: Joi.string().required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+});
+
+export async function amountSchemaValidation(req, res, next) {
+  try {
+    await amountSchema.validateAsync(req.body, { abortEarly: false });
+
+    next();
+  } catch (error) {
+    if (Joi.isError(error)) {
+      const errorMessages = generateJoiErrors(error);
+      return res.status(400).json({ message: errorMessages });
+    }
+
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+

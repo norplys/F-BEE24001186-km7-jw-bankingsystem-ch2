@@ -48,3 +48,12 @@ export function getAccountByUserIdAndBankName(userId, bankName) {
     },
   });
 }
+
+export function getAccountByUserIdAndAccountNumber(userId, bankAccountNumber) {
+  return prisma.bankAccount.findUnique({
+    where: {
+      userId,
+      bankAccountNumber,
+    },
+  });
+} 

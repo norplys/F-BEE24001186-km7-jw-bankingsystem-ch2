@@ -21,13 +21,13 @@ export class AccountService {
         return account;
     }
 
-    async getAccountByUserIdAndBankName(userId, bankName) {
-        const account = await accountRepository.getAccountByIdAndBankName(userId, bankName);
+    async updateAccountById(id, data, transaction = null) {
+        const account = await accountRepository.updateAccountById(id, data, transaction);
         return account;
     }
 
-    async updateAccountById(id, data, transaction) {
-        const account = await accountRepository.updateAccountById(id, data, transaction);
+    async getAccountByUserIdAndAccountNumber(userId, accountNumber) {
+        const account = await accountRepository.getAccountByUserIdAndAccountNumber(userId, accountNumber);
         return account;
     }
 }
