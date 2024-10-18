@@ -7,6 +7,13 @@ async function seed() {
         email: "test@gmail.com",
         password: "password",
         name: "Test",
+        profile: {
+            create: {
+            identityType: "KTP",
+            identityNumber: "1234567890",
+            address: "Jl. Jalan No. 1"
+        }
+    }
 }
 });
 
