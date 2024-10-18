@@ -30,3 +30,21 @@ export function getAccountByAccountNumber(bankAccountNumber) {
   });
 }
 
+export function updateAccountById(id, data, transaction = null) {
+  const db = transaction || prisma;
+  return db.bankAccount.update({
+    where: {
+      id,
+    },
+    data,
+  });
+}
+
+export function getAccountByUserIdAndBankName(userId, bankName) {
+  return prisma.bankAccount.findFirst({
+    where: {
+      userId,
+      bankName,
+    },
+  });
+}

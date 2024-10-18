@@ -20,4 +20,14 @@ export class AccountService {
         const account = await accountRepository.getAccountByAccountNumber(bankAccountNumber);
         return account;
     }
+
+    async getAccountByUserIdAndBankName(userId, bankName) {
+        const account = await accountRepository.getAccountByIdAndBankName(userId, bankName);
+        return account;
+    }
+
+    async updateAccountById(id, data, transaction) {
+        const account = await accountRepository.updateAccountById(id, data, transaction);
+        return account;
+    }
 }

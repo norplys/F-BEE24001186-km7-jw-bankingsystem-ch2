@@ -7,8 +7,11 @@ const schema = Joi.object({
 export async function validateParamsId(req, res, next) {
   try {
     const parsedId = Number(req.params.id);
+
     await schema.validateAsync({ id: parsedId });
+
     res.locals.id = parsedId;
+
     next();
   } catch (error) {
     if (Joi.isError(error)) {

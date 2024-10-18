@@ -1,7 +1,7 @@
-import { prisma } from "../utils/db";
+import { prisma } from "../utils/db.js";
 
-export function createTransaction(data) {
-    return prisma.transaction.create({
+export function createTransaction(data, transaction) {
+    return transaction.transaction.create({
         data,
     });
 }

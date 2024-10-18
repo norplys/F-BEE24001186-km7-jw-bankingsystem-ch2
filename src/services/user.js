@@ -1,6 +1,6 @@
 import * as userRepository from '../repositories/user.js';
 
-export class UsersService {
+export class UserService {
     async createUser(data) {
         const user = await userRepository.createUser(data);
         return user;
