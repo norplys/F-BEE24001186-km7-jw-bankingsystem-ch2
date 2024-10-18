@@ -3,7 +3,6 @@ export class BankAccount {
       this.saldo = 0;
     }
 
-
     // Add your saldo, if value is negative, reject with message "Angka harus positif"
     deposit(value) {
       return new Promise((resolve, reject) => {
