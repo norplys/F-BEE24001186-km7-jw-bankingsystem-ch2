@@ -21,7 +21,10 @@ export async function createAccount(req, res) {
       id: user.id,
       bankAccountNumber,
     });
-    res.status(201).json(account);
+    res.status(201).json({
+        message: "Account created successfully",
+        data: account,
+    });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
