@@ -11,8 +11,8 @@ export default (app) => {
 
   router.put(
     '/deposit',
-    accountValidationMiddleware.amountSchemaValidation,
     authMiddleware.isAuthorized,
+    accountValidationMiddleware.amountSchemaValidation,
     accountMiddleware.checkAccountExistByUserIdAndAccountNumber,
     accountController.deposit
   )
