@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/30</span>
+                <span class='fraction'>30/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/30</span>
+                <span class='fraction'>30/30</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -178,25 +178,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { AccountService } from "../services/account.js";
@@ -245,26 +245,26 @@ export async function checkDestinationAccountExist(req, res, next) {
   }
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >checkAccountExistByUserIdAndAccountNumber(</span>req, res, next) {
-    const { accountNumber } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const service = <span class="cstat-no" title="statement not covered" >new AccountService();</span>
-    const userId = <span class="cstat-no" title="statement not covered" >res.locals.user.id;</span>
+export async function checkAccountExistByUserIdAndAccountNumber(req, res, next) {
+    const { accountNumber } = req.body;
+    const service = new AccountService();
+    const userId = res.locals.user.id;
   
-<span class="cstat-no" title="statement not covered" >    try {</span>
-      const account = <span class="cstat-no" title="statement not covered" >await service.getAccountByUserIdAndAccountNumber(</span>
+    try {
+      const account = await service.getAccountByUserIdAndAccountNumber(
         userId,
         accountNumber
       );
   
-<span class="cstat-no" title="statement not covered" >      if (!account) {</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(404).json({ message: "Account doesn't exist" });</span>
+      if (!account) {
+        return res.status(404).json({ message: "Account doesn't exist" });
       }
   
-<span class="cstat-no" title="statement not covered" >      res.locals.account = account;</span>
+      res.locals.account = account;
   
-<span class="cstat-no" title="statement not covered" >      next();</span>
+      next();
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      res.status(500).json({ message: "Internal server error" });</span>
+      res.status(500).json({ message: "Internal server error" });
     }
   }
 &nbsp;</pre></td></tr></table></pre>
@@ -274,7 +274,7 @@ export async function <span class="fstat-no" title="function not covered" >check
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-26T14:11:56.087Z
+                at 2024-10-26T15:59:36.697Z
             </div>
         <script src="../prettify.js"></script>
         <script>
