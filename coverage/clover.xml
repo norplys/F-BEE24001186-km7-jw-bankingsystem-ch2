@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1730045515442" clover="3.2.0">
-  <project timestamp="1730045515443" name="All files">
-    <metrics statements="96" coveredstatements="96" conditionals="19" coveredconditionals="19" methods="21" coveredmethods="21" elements="136" coveredelements="136" complexity="0" loc="96" ncloc="96" packages="3" files="8" classes="8"/>
+<coverage generated="1730047582573" clover="3.2.0">
+  <project timestamp="1730047582574" name="All files">
+    <metrics statements="137" coveredstatements="137" conditionals="23" coveredconditionals="23" methods="26" coveredmethods="26" elements="186" coveredelements="186" complexity="0" loc="137" ncloc="137" packages="3" files="9" classes="9"/>
     <package name="controllers">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="48" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
+      <file name="account.js" path="C:\Users\Legion\Desktop\Challange_02\src\controllers\account.js">
+        <metrics statements="41" coveredstatements="41" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="40" count="5" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="43" count="5" type="stmt"/>
+        <line num="45" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="79" count="2" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
+        <line num="83" count="2" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="99" count="3" type="stmt"/>
+        <line num="100" count="3" type="stmt"/>
+        <line num="101" count="3" type="stmt"/>
+        <line num="103" count="3" type="stmt"/>
+        <line num="104" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="105" count="1" type="stmt"/>
+        <line num="110" count="2" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
+      </file>
       <file name="profile.js" path="C:\Users\Legion\Desktop\Challange_02\src\controllers\profile.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="2" type="stmt"/>

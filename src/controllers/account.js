@@ -8,12 +8,16 @@ export async function createAccount(req, res) {
     const service = new AccountService();
     let bankAccountNumber = generateBankAccountNumber();
 
-    const accountExists = await service.getAccountByAccountNumber(
+    let accountExists = await service.getAccountByAccountNumber(
       bankAccountNumber
     );
 
     while (accountExists) {
       bankAccountNumber = generateBankAccountNumber();
+
+      accountExists = await service.getAccountByAccountNumber(
+        bankAccountNumber
+      );
     }
 
     const account = await service.createAccount({
