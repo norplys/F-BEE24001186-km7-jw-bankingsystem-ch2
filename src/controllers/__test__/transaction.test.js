@@ -14,21 +14,11 @@ jest.unstable_mockModule("../../services/transaction.js", () => ({
   })),
 }));
 
-const mockGetAccountById = jest.fn();
-const mockGetAllAccount = jest.fn();
-const mockGetAccountByAccountNumber = jest.fn();
-const mockCreateAccount = jest.fn();
 const mockUpdateAccountById = jest.fn();
-const mockGetAccountByUserIdAndAccountNumber = jest.fn();
 
 jest.unstable_mockModule("../../services/account.js", () => ({
   AccountService: jest.fn().mockImplementation(() => ({
-    createAccount: mockCreateAccount,
-    getAccountById: mockGetAccountById,
-    getAllAccount: mockGetAllAccount,
-    getAccountByAccountNumber: mockGetAccountByAccountNumber,
     updateAccountById: mockUpdateAccountById,
-    getAccountByUserIdAndAccountNumber: mockGetAccountByUserIdAndAccountNumber,
   })),
 }));
 
