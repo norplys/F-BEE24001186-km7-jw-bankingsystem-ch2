@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1729958376737" clover="3.2.0">
-  <project timestamp="1729958376738" name="All files">
-    <metrics statements="60" coveredstatements="60" conditionals="9" coveredconditionals="9" methods="18" coveredmethods="18" elements="87" coveredelements="87" complexity="0" loc="60" ncloc="60" packages="2" files="5" classes="5"/>
+<coverage generated="1730005354848" clover="3.2.0">
+  <project timestamp="1730005354848" name="All files">
+    <metrics statements="81" coveredstatements="77" conditionals="17" coveredconditionals="15" methods="19" coveredmethods="19" elements="117" coveredelements="111" complexity="0" loc="81" ncloc="81" packages="2" files="6" classes="6"/>
     <package name="middlewares">
-      <metrics statements="30" coveredstatements="30" conditionals="8" coveredconditionals="8" methods="3" coveredmethods="3"/>
+      <metrics statements="51" coveredstatements="47" conditionals="16" coveredconditionals="14" methods="4" coveredmethods="4"/>
       <file name="account.js" path="C:\Users\Legion\Desktop\Challange_02\src\middlewares\account.js">
         <metrics statements="30" coveredstatements="30" conditionals="8" coveredconditionals="8" methods="3" coveredmethods="3"/>
         <line num="4" count="4" type="stmt"/>
@@ -36,6 +36,30 @@
         <line num="62" count="1" type="stmt"/>
         <line num="64" count="1" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
+      </file>
+      <file name="auth.js" path="C:\Users\Legion\Desktop\Challange_02\src\middlewares\auth.js">
+        <metrics statements="21" coveredstatements="17" conditionals="8" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
       </file>
     </package>
     <package name="services">

@@ -1,4 +1,4 @@
-import { describe, it, jest } from "@jest/globals";
+import { describe, jest } from "@jest/globals";
 
 const mockGetAccountByAccountNumber = jest.fn();
 const mockGetAccountByUserIdAndAccountNumber = jest.fn();
