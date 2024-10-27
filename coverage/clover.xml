@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1730050558796" clover="3.2.0">
-  <project timestamp="1730050558796" name="All files">
-    <metrics statements="202" coveredstatements="202" conditionals="31" coveredconditionals="31" methods="35" coveredmethods="35" elements="268" coveredelements="268" complexity="0" loc="202" ncloc="202" packages="3" files="12" classes="12"/>
+<coverage generated="1730051138903" clover="3.2.0">
+  <project timestamp="1730051138903" name="All files">
+    <metrics statements="219" coveredstatements="219" conditionals="34" coveredconditionals="34" methods="51" coveredmethods="51" elements="304" coveredelements="304" complexity="0" loc="219" ncloc="219" packages="4" files="16" classes="16"/>
     <package name="controllers">
       <metrics statements="113" coveredstatements="113" conditionals="12" coveredconditionals="12" methods="15" coveredmethods="15"/>
       <file name="account.js" path="C:\Users\Legion\Desktop\Challange_02\src\controllers\account.js">
@@ -202,6 +202,38 @@
         <line num="11" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="repositories">
+      <metrics statements="17" coveredstatements="17" conditionals="3" coveredconditionals="3" methods="16" coveredmethods="16"/>
+      <file name="account.js" path="C:\Users\Legion\Desktop\Challange_02\src\repositories\account.js">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="7" coveredmethods="7"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+      </file>
+      <file name="profile.js" path="C:\Users\Legion\Desktop\Challange_02\src\repositories\profile.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="transaction.js" path="C:\Users\Legion\Desktop\Challange_02\src\repositories\transaction.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+      <file name="user.js" path="C:\Users\Legion\Desktop\Challange_02\src\repositories\user.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
       </file>
     </package>
     <package name="services">
