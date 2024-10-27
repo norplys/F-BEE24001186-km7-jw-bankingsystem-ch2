@@ -2,10 +2,10 @@ import { describe, jest } from "@jest/globals";
 
 jest.unstable_mockModule("../../repositories/transaction.js",
     () => ({
-        createTransaction: jest.fn((data) => data),
-        getTransactionById: jest.fn((id) => id),
-        getAllTransactions: jest.fn((data) => data),
-        deleteTransaction: jest.fn((id) => id),
+        createTransaction: jest.fn(),
+        getTransactionById: jest.fn(),
+        getAllTransactions: jest.fn(),
+        deleteTransaction: jest.fn(),
     })
 );
 

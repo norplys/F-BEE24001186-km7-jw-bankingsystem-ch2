@@ -2,7 +2,7 @@ import { describe, jest } from "@jest/globals";
 
 jest.unstable_mockModule("../../repositories/profile.js",
     () => ({
-        updateProfileByUserId: jest.fn((userId, data) => data),
+        updateProfileByUserId: jest.fn(),
     })
 );
 

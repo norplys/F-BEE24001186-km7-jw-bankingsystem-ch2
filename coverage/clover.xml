@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1730040558887" clover="3.2.0">
-  <project timestamp="1730040558888" name="All files">
-    <metrics statements="81" coveredstatements="81" conditionals="17" coveredconditionals="17" methods="19" coveredmethods="19" elements="117" coveredelements="117" complexity="0" loc="81" ncloc="81" packages="2" files="6" classes="6"/>
+<coverage generated="1730044917450" clover="3.2.0">
+  <project timestamp="1730044917450" name="All files">
+    <metrics statements="88" coveredstatements="88" conditionals="17" coveredconditionals="17" methods="20" coveredmethods="20" elements="125" coveredelements="125" complexity="0" loc="88" ncloc="88" packages="3" files="7" classes="7"/>
+    <package name="controllers">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="profile.js" path="C:\Users\Legion\Desktop\Challange_02\src\controllers\profile.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="middlewares">
       <metrics statements="51" coveredstatements="51" conditionals="16" coveredconditionals="16" methods="4" coveredmethods="4"/>
       <file name="account.js" path="C:\Users\Legion\Desktop\Challange_02\src\middlewares\account.js">

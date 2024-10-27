@@ -1,10 +1,10 @@
 import { describe, jest } from "@jest/globals";
 
 jest.unstable_mockModule("../../repositories/user.js", () => ({
-  createUser: jest.fn((data) => data),
-  getUserById: jest.fn((id) => id),
-  getAllUser: jest.fn((data) => data),
-  getUserByEmail: jest.fn((email) => email),
+  createUser: jest.fn(),
+  getUserById: jest.fn(),
+  getAllUser: jest.fn(),
+  getUserByEmail: jest.fn(),
 }));
 
 const userRepository = await import("../../repositories/user.js");

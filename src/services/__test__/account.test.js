@@ -2,12 +2,12 @@ import { describe, jest } from "@jest/globals";
 
 jest.unstable_mockModule("../../repositories/account.js", 
   () => ({
-    createAccount: jest.fn((data) => data),
-    getAccountById: jest.fn((id) => id),
-    getAllAccount: jest.fn((data) => data),
-    getAccountByAccountNumber: jest.fn((bankAccountNumber) => bankAccountNumber),
-    updateAccountById: jest.fn((id, data) => data),
-    getAccountByUserIdAndAccountNumber: jest.fn((userId, accountNumber) => accountNumber),
+    createAccount: jest.fn(),
+    getAccountById: jest.fn(),
+    getAllAccount: jest.fn(),
+    getAccountByAccountNumber: jest.fn(),
+    updateAccountById: jest.fn(),
+    getAccountByUserIdAndAccountNumber: jest.fn(),
   })
 );
 
