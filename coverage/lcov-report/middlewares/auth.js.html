@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.95% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.95% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
@@ -110,25 +110,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -139,12 +139,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { UserService } from "../services/user.js";
@@ -181,12 +181,12 @@ export async function isAuthorized(req, res, next){
     res.locals.user = user;
     next();
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    if (error instanceof jwt.JsonWebTokenError) {</span>
-<span class="cstat-no" title="statement not covered" >      res.status(401).json({ message: error.message });</span>
-<span class="cstat-no" title="statement not covered" >      return;</span>
+    if (error instanceof jwt.JsonWebTokenError) {
+      res.status(401).json({ message: error.message });
+      return;
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    res.status(500).json({ message: "Internal server error" });</span>
+    res.status(500).json({ message: "Internal server error" });
   }
 &nbsp;
 }</pre></td></tr></table></pre>
@@ -196,7 +196,7 @@ export async function isAuthorized(req, res, next){
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-27T05:02:34.816Z
+                at 2024-10-27T14:49:18.857Z
             </div>
         <script src="../prettify.js"></script>
         <script>
