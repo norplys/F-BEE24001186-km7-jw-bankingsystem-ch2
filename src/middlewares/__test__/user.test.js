@@ -41,7 +41,7 @@ describe("userMiddleware", () => {
       expect(mockNext).toHaveBeenCalled();
     });
 
-    it("should return 403 if email exists", async () => {
+    it("should return 409 if email exists", async () => {
       mockGetUserByEmail.mockResolvedValue({ id: 1 });
 
       await userMiddleware.blockIfEmailExists(
@@ -50,7 +50,7 @@ describe("userMiddleware", () => {
         mockNext
       );
 
-      expect(mockResponse.status).toHaveBeenCalledWith(403);
+      expect(mockResponse.status).toHaveBeenCalledWith(409);
       expect(mockResponse.json).toHaveBeenCalledWith({
         message: "Email already exists",
       });

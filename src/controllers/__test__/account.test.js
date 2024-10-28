@@ -168,7 +168,7 @@ describe("accountController", () => {
       expect(mockResponse.status).toHaveBeenCalledWith(404);
 
       expect(mockResponse.json).toHaveBeenCalledWith({
-        error: "Account not found",
+        message: "Account not found",
       });
     });
   });
@@ -220,7 +220,7 @@ describe("accountController", () => {
 
       expect(mockResponse.status).toHaveBeenCalledWith(404);
       expect(mockResponse.json).toHaveBeenCalledWith({
-        error: "Account not found",
+        message: "Account not found",
       });
     });
 
