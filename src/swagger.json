@@ -218,8 +218,6 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "email": "test@gmail.com",
-                  "password": "password",
                   "bankName": "cabang1"
                 }
               }
@@ -535,9 +533,7 @@
                 "type": "object",
                 "example": {
                   "amount": 10,
-                  "accountNumber": "9942275380",
-                  "email": "test@gmail.com",
-                  "password": "password"
+                  "accountNumber": "4159334450"
                 }
               }
             }
@@ -663,9 +659,7 @@
                 "type": "object",
                 "example": {
                   "amount": 10,
-                  "accountNumber": "9942275380",
-                  "email": "test@gmail.com",
-                  "password": "password"
+                  "accountNumber": "4159334450"
                 }
               }
             }
@@ -790,8 +784,6 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "email": "test@gmail.com",
-                  "password": "password",
                   "sourceAccountNumber": "2048480649",
                   "destinationAccountNumber": "9942275380",
                   "amount": 20
@@ -1184,10 +1176,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "example": {
-                  "email": "test@gmail.com",
-                  "password": "password"
-                }
+                "example": ""
               }
             }
           }
@@ -1288,8 +1277,8 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "email": "test@gmail.com",
-                  "password": "password"
+                  "email": "tess@gmail.com",
+                  "password": "admin123"
                 }
               }
             }
@@ -1377,7 +1366,7 @@
                 "type": "object",
                 "example": {
                   "name": "test123",
-                  "email": "tests@gmail.com",
+                  "email": "tess@gmail.com",
                   "password": "admin123",
                   "identityType": "ktp",
                   "identityNumber": "123",
