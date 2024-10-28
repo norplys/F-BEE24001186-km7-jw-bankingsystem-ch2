@@ -1,10 +1,12 @@
-import { describe, it, jest } from "@jest/globals";
+import { describe, jest } from "@jest/globals";
 
 const mockGetUserByEmail = jest.fn();
+const mockComparePassword = jest.fn();
 
 jest.unstable_mockModule("../../services/user.js", () => ({
   UserService: jest.fn().mockImplementation(() => ({
     getUserByEmail: mockGetUserByEmail,
+    comparePassword: mockComparePassword,
   })),
 }));
 
@@ -39,6 +41,7 @@ describe("authController", () => {
 
     it("should return 200 if login success", async () => {
       mockGetUserByEmail.mockResolvedValue(mockAccount);
+      mockComparePassword.mockResolvedValue(true);
       jwt.default.sign.mockReturnValue("token");
 
       await login(mockRequest, mockResponse);
@@ -55,6 +58,7 @@ describe("authController", () => {
 
     it("should return 400 if email is invalid", async () => {
       mockGetUserByEmail.mockResolvedValue(null);
+      mockComparePassword.mockResolvedValue(true);
 
       await login(mockRequest, mockResponse);
 
@@ -67,6 +71,7 @@ describe("authController", () => {
     it("should return 400 if password is invalid", async () => {
       mockRequest.body.password = "invalid_password";
       mockGetUserByEmail.mockResolvedValue(mockAccount);
+      mockComparePassword.mockResolvedValue(false);
 
       await login(mockRequest, mockResponse);
 

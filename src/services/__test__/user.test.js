@@ -7,6 +7,15 @@ jest.unstable_mockModule("../../repositories/user.js", () => ({
   getUserByEmail: jest.fn(),
 }));
 
+jest.unstable_mockModule("bcrypt", () => ({
+  default: {
+    genSalt: jest.fn(),
+    hash: jest.fn(),
+    compare: jest.fn(),
+  },
+}));
+
+const bcrypt = await import("bcrypt");
 const userRepository = await import("../../repositories/user.js");
 const { UserService } = await import("../../services/user.js");
 
@@ -25,7 +34,8 @@ describe("testUserService", () => {
   describe("createUser", () => {
     it("should return the created user", async () => {
       userRepository.createUser.mockResolvedValue(userData);
-
+      bcrypt.default.genSalt.mockResolvedValue("salt");
+      bcrypt.default.hash.mockResolvedValue("hashedPassword");
       const user = await service.createUser(userData);
 
       expect(user).toEqual(userData);
@@ -61,6 +71,30 @@ describe("testUserService", () => {
       const user = await service.getUserByEmail("test@gmail.com");
 
       expect(user).toEqual(userData);
+    });
+  });
+
+  describe("comparePassword", () => {
+    it("should return true if password is valid", async () => {
+      bcrypt.default.compare.mockResolvedValue(true);
+
+      const isValid = await service.comparePassword(
+        "password",
+        "hashedPassword"
+      );
+
+      expect(isValid).toBe(true);
+    });
+
+    it("should return false if password is invalid", async () => {
+      bcrypt.default.compare.mockResolvedValue(false);
+
+      const isValid = await service.comparePassword(
+        "password",
+        "hashedPassword"
+      );
+
+      expect(isValid).toBe(false);
     });
   });
 });

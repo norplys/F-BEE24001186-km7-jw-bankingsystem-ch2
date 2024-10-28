@@ -11,7 +11,9 @@ export async function login(req, res) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    if (user.password !== password) {
+    const isValid = await service.comparePassword(password, user.password);
+
+    if (!isValid) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
@@ -25,7 +27,7 @@ export async function login(req, res) {
     };
 
     res.status(200).json({ message: "Login success", data: userWithToken });
-  } catch (error) {
+  } catch (error) {  
     res.status(500).json({ message: "Internal server error" });
   }
 }
