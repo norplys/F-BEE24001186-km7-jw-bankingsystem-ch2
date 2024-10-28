@@ -28,9 +28,7 @@ describe("profileValidation", () => {
         body: {
           identityType: "National ID",
           identityNumber: "123456789",
-          address: "Address",
-          email: "test@gmail.com",
-          password: "password",
+          address: "Address"
         },
       };
 

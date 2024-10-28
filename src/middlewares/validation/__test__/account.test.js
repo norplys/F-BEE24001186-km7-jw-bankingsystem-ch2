@@ -25,8 +25,6 @@ describe("accountValidation", () => {
     it("should call next if validation passes", async () => {
       const req = {
         body: {
-          email: "test@gmail.com",
-          password: "password",
           bankName: "Bank Name",
         },
       };
@@ -59,9 +57,7 @@ describe("accountValidation", () => {
       const req = {
         body: {
           amount: 100,
-          accountNumber: "123456",
-          email: "test@gmail.com",
-          password: "password",
+          accountNumber: "123456"
         },
       };
 
@@ -74,9 +70,7 @@ describe("accountValidation", () => {
       const req = {
         body: {
           amount: -100,
-          accountNumber: "123456",
-          email: "test@gmail.com",
-          password: "password",
+          accountNumber: "123456"
         },
       };
 

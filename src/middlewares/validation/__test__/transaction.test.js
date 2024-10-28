@@ -26,8 +26,6 @@ describe("transactionValidation", () => {
     it("should call next if validation passes", async () => {
       const req = {
         body: {
-          email: "test@gmail.com",
-          password: "password",
           sourceAccountNumber: "123",
           destinationAccountNumber: "456",
           amount: 100,
@@ -59,8 +57,6 @@ describe("transactionValidation", () => {
     it("should return 400 if source and destination account are the same", async () => {
       const req = {
         body: {
-            email: "test@gmail.com",
-            password: "password",
             sourceAccountNumber: "123",
             destinationAccountNumber: "123",
             amount: 100,
