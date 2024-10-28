@@ -19,16 +19,16 @@ export default (app) => {
 
   router.put(
     '/withdraw',
-    accountValidationMiddleware.amountSchemaValidation,
     authMiddleware.isAuthorized,
+    accountValidationMiddleware.amountSchemaValidation,
     accountMiddleware.checkAccountExistByUserIdAndAccountNumber,
     accountController.withdraw
   )
 
   router.post(
     "/",
-    accountValidationMiddleware.createAccountValidation,
     authMiddleware.isAuthorized,
+    accountValidationMiddleware.createAccountValidation,
     accountController.createAccount
   );
 

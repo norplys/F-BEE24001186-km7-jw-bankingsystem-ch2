@@ -44,7 +44,7 @@ export async function getAccountById(_req, res) {
 
     if (!account) {
       return res.status(404).json({
-        error: "Account not found",
+        message: "Account not found",
       });
     }
 
