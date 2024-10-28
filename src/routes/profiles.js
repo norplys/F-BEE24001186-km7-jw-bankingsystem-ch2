@@ -9,8 +9,8 @@ export default (app) => {
 
   router.put(
     "/",
-    profileValidationMiddleware.updateProfileValidation,
     authMiddleware.isAuthorized,
+    profileValidationMiddleware.updateProfileValidation,
     profileController.updateProfile
   );
 };

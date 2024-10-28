@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "main": "banking_system.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "start": "nodemon ./src/index.js",
     "db:migrate": "prisma migrate dev",
     "db:seed": "prisma db seed",
-    "db:reset": "prisma migrate reset --force"
+    "db:reset": "prisma migrate reset --force",
+    "swagger": "node ./src/swagger.js"
   },
   "author": "",
   "type": "module",
@@ -16,14 +17,21 @@
   "dependencies": {
     "@inquirer/prompts": "^6.0.1",
     "@prisma/client": "^5.21.1",
+    "bcrypt": "^5.1.1",
     "express": "^4.21.1",
     "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
     "loading-cli": "^1.1.2",
     "nodemon": "^3.1.7",
-    "prisma": "^5.21.1"
+    "prisma": "^5.21.1",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "prisma": {
     "schema": "./src/utils/prisma/schema.prisma",
     "seed": "node ./src/utils/prisma/seed.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

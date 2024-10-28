@@ -1,0 +1,1462 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BINAR",
+    "description": "Binar challange batch 7 API documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://{{local_host}}"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "oauth2Auth": {
+        "type": "http",
+        "scheme": "oauth2"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "User"
+    },
+    {
+      "name": "Account"
+    },
+    {
+      "name": "Transaction"
+    },
+    {
+      "name": "Profile"
+    },
+    {
+      "name": "Auth"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get All user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": 1,
+                      "name": "Test",
+                      "email": "test@gmail.com",
+                      "password": "password",
+                      "createdAt": "2024-10-18T14:22:04.427Z",
+                      "updatedAt": null
+                    },
+                    {
+                      "id": 2,
+                      "name": "izzan",
+                      "email": "izzan@gmail.com",
+                      "password": "admin123",
+                      "createdAt": "2024-10-25T12:52:24.805Z",
+                      "updatedAt": "2024-10-25T12:52:24.805Z"
+                    },
+                    {
+                      "id": 3,
+                      "name": "izzan",
+                      "email": "test1@gmail.com",
+                      "password": "admin123",
+                      "createdAt": "2024-10-28T04:40:02.293Z",
+                      "updatedAt": "2024-10-28T04:40:02.293Z"
+                    },
+                    {
+                      "id": 4,
+                      "name": "test123",
+                      "email": "tests@gmail.com",
+                      "password": "admin123",
+                      "createdAt": "2024-10-28T04:40:19.637Z",
+                      "updatedAt": "2024-10-28T04:40:19.637Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get detail user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "15"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": {
+                    "id": 1,
+                    "name": "Test",
+                    "email": "test@gmail.com",
+                    "password": "password",
+                    "createdAt": "2024-10-18T14:22:04.427Z",
+                    "updatedAt": null,
+                    "profile": {
+                      "id": 1,
+                      "identityType": "KTP",
+                      "identityNumber": "1234567890",
+                      "address": "Jl. Jalan No. 1",
+                      "userId": 1,
+                      "createdAt": "2024-10-18T14:22:04.427Z",
+                      "updatedAt": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"id\" must be a number"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "User not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "create account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "bankName": "cabang1"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Account created successfully",
+                  "data": {
+                    "id": 9,
+                    "bankName": "cabang1",
+                    "bankAccountNumber": "4870003771",
+                    "balance": 0,
+                    "userId": 2,
+                    "createdAt": "2024-10-28T03:00:57.141Z",
+                    "updatedAt": "2024-10-28T03:00:57.141Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"email\" is required"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Missing authorization header"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "getAllAccount",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": 2,
+                      "bankName": "cabang1",
+                      "bankAccountNumber": "9701507308",
+                      "balance": 0,
+                      "userId": 1,
+                      "createdAt": "2024-10-18T14:22:04.427Z",
+                      "updatedAt": null
+                    },
+                    {
+                      "id": 3,
+                      "bankName": "cabang1",
+                      "bankAccountNumber": "5736496315",
+                      "balance": 0,
+                      "userId": 1,
+                      "createdAt": "2024-10-18T15:50:43.668Z",
+                      "updatedAt": "2024-10-18T15:50:43.668Z"
+                    },
+                    {
+                      "id": 5,
+                      "bankName": "cabang1",
+                      "bankAccountNumber": "3690993194",
+                      "balance": 0,
+                      "userId": 1,
+                      "createdAt": "2024-10-18T16:47:43.628Z",
+                      "updatedAt": "2024-10-18T16:47:43.628Z"
+                    },
+                    {
+                      "id": 4,
+                      "bankName": "cabang1",
+                      "bankAccountNumber": "2048480649",
+                      "balance": 100,
+                      "userId": 1,
+                      "createdAt": "2024-10-18T15:51:08.692Z",
+                      "updatedAt": "2024-10-18T16:52:02.251Z"
+                    },
+                    {
+                      "id": 1,
+                      "bankName": "Bank Central Asia",
+                      "bankAccountNumber": "4834529669",
+                      "balance": 2000,
+                      "userId": 1,
+                      "createdAt": "2024-10-18T14:22:04.427Z",
+                      "updatedAt": "2024-10-26T02:05:57.286Z"
+                    },
+                    {
+                      "id": 6,
+                      "bankName": "Test Bank",
+                      "bankAccountNumber": "1572400996",
+                      "balance": 0,
+                      "userId": 1,
+                      "createdAt": "2024-10-27T16:20:28.621Z",
+                      "updatedAt": "2024-10-27T16:20:28.621Z"
+                    },
+                    {
+                      "id": 7,
+                      "bankName": "Test Bank",
+                      "bankAccountNumber": "4735483443",
+                      "balance": 0,
+                      "userId": 1,
+                      "createdAt": "2024-10-27T16:20:28.642Z",
+                      "updatedAt": "2024-10-27T16:20:28.642Z"
+                    },
+                    {
+                      "id": 8,
+                      "bankName": "cabang1",
+                      "bankAccountNumber": "4777078631",
+                      "balance": 0,
+                      "userId": 2,
+                      "createdAt": "2024-10-28T02:57:17.586Z",
+                      "updatedAt": "2024-10-28T02:57:17.586Z"
+                    },
+                    {
+                      "id": 9,
+                      "bankName": "cabang1",
+                      "bankAccountNumber": "4870003771",
+                      "balance": 0,
+                      "userId": 2,
+                      "createdAt": "2024-10-28T03:00:57.141Z",
+                      "updatedAt": "2024-10-28T03:00:57.141Z"
+                    },
+                    {
+                      "id": 10,
+                      "bankName": "cabang1",
+                      "bankAccountNumber": "9942275380",
+                      "balance": 10,
+                      "userId": 2,
+                      "createdAt": "2024-10-28T03:58:03.776Z",
+                      "updatedAt": "2024-10-28T03:58:13.998Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{id}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "getAccountById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": {
+                    "id": 1,
+                    "bankName": "Bank Central Asia",
+                    "bankAccountNumber": "4834529669",
+                    "balance": 2000,
+                    "userId": 1,
+                    "createdAt": "2024-10-18T14:22:04.427Z",
+                    "updatedAt": "2024-10-26T02:05:57.286Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"id\" must be a number"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Account not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/deposit": {
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "deposit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "amount": 10,
+                  "accountNumber": "4159334450"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Deposit successful",
+                  "data": {
+                    "id": 10,
+                    "bankName": "cabang1",
+                    "bankAccountNumber": "9942275380",
+                    "balance": 10,
+                    "userId": 2,
+                    "createdAt": "2024-10-28T03:58:03.776Z",
+                    "updatedAt": "2024-10-28T03:58:13.998Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"amount\" is required",
+                    "\"accountNumber\" is required",
+                    "\"email\" is required",
+                    "\"password\" is required"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Missing authorization header"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Account doesn't exist"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/withdraw": {
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "withdraw",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "amount": 10,
+                  "accountNumber": "4159334450"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Withdrawal successful",
+                  "data": {
+                    "id": 10,
+                    "bankName": "cabang1",
+                    "bankAccountNumber": "9942275380",
+                    "balance": 10,
+                    "userId": 2,
+                    "createdAt": "2024-10-28T03:58:03.776Z",
+                    "updatedAt": "2024-10-28T04:04:21.668Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"amount\" is required",
+                    "\"accountNumber\" is required",
+                    "\"email\" is required",
+                    "\"password\" is required"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Missing authorization header"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Account doesn't exist"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions": {
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Create Transaction",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "sourceAccountNumber": "2048480649",
+                  "destinationAccountNumber": "9942275380",
+                  "amount": 20
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Transaction created successfully",
+                  "data": {
+                    "id": 5,
+                    "amount": 20,
+                    "sourceAccountId": 4,
+                    "destinationAccountId": 10,
+                    "createdAt": "2024-10-28T04:23:52.625Z",
+                    "updatedAt": "2024-10-28T04:23:52.625Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "400 Bad Request - Source and dest acc cant same",
+                    "value": {
+                      "message": "Source and destination account cannot be the same"
+                    }
+                  },
+                  "example-1": {
+                    "summary": "400 Bad Request - Missing body",
+                    "value": {
+                      "message": [
+                        "\"email\" is required",
+                        "\"password\" is required",
+                        "\"sourceAccountNumber\" is required",
+                        "\"destinationAccountNumber\" is required",
+                        "\"amount\" is required"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Missing authorization header"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Get all transaction",
+        "security": [
+          {
+            "oauth2Auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Transactions retrieved successfully",
+                  "data": [
+                    {
+                      "id": 1,
+                      "amount": 20,
+                      "sourceAccountId": 1,
+                      "destinationAccountId": 1,
+                      "createdAt": "2024-10-18T16:48:16.338Z",
+                      "updatedAt": "2024-10-18T16:48:16.338Z"
+                    },
+                    {
+                      "id": 2,
+                      "amount": 20,
+                      "sourceAccountId": 1,
+                      "destinationAccountId": 1,
+                      "createdAt": "2024-10-18T16:49:07.573Z",
+                      "updatedAt": "2024-10-18T16:49:07.573Z"
+                    },
+                    {
+                      "id": 3,
+                      "amount": 20,
+                      "sourceAccountId": 1,
+                      "destinationAccountId": 4,
+                      "createdAt": "2024-10-18T16:51:36.171Z",
+                      "updatedAt": "2024-10-18T16:51:36.171Z"
+                    },
+                    {
+                      "id": 4,
+                      "amount": 40,
+                      "sourceAccountId": 1,
+                      "destinationAccountId": 4,
+                      "createdAt": "2024-10-18T16:52:02.251Z",
+                      "updatedAt": "2024-10-18T16:52:02.251Z"
+                    },
+                    {
+                      "id": 5,
+                      "amount": 20,
+                      "sourceAccountId": 4,
+                      "destinationAccountId": 10,
+                      "createdAt": "2024-10-28T04:23:52.625Z",
+                      "updatedAt": "2024-10-28T04:23:52.625Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{id}": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Get transaction by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": {
+                    "id": 1,
+                    "amount": 20,
+                    "sourceAccountId": 1,
+                    "destinationAccountId": 1,
+                    "createdAt": "2024-10-18T16:48:16.338Z",
+                    "updatedAt": "2024-10-18T16:48:16.338Z",
+                    "source_account": {
+                      "id": 1,
+                      "bankName": "Bank Central Asia",
+                      "bankAccountNumber": "4834529669",
+                      "balance": 2000,
+                      "userId": 1,
+                      "createdAt": "2024-10-18T14:22:04.427Z",
+                      "updatedAt": "2024-10-26T02:05:57.286Z"
+                    },
+                    "destination_account": {
+                      "id": 1,
+                      "bankName": "Bank Central Asia",
+                      "bankAccountNumber": "4834529669",
+                      "balance": 2000,
+                      "userId": 1,
+                      "createdAt": "2024-10-18T14:22:04.427Z",
+                      "updatedAt": "2024-10-26T02:05:57.286Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"id\" must be a number"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Transaction not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Delete transaction",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Transaction deleted successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"id\" must be a number"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Missing authorization header"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profiles": {
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Update profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": ""
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Profile updated successfully",
+                  "data": {
+                    "id": 1,
+                    "identityType": "KTP",
+                    "identityNumber": "1234567890",
+                    "address": "Jl. Jalan No. 1",
+                    "userId": 1,
+                    "createdAt": "2024-10-18T14:22:04.427Z",
+                    "updatedAt": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"email\" is required",
+                    "\"password\" is required"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Missing authorization header"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "tess@gmail.com",
+                  "password": "admin123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Login success",
+                  "data": {
+                    "id": 1,
+                    "name": "Test",
+                    "email": "test@gmail.com",
+                    "password": "password",
+                    "createdAt": "2024-10-18T14:22:04.427Z",
+                    "updatedAt": null,
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMwMDg4ODc2LCJleHAiOjE3MzAzMTkyNzZ9.XMopXqWsjjoVJtCjD2ITPcQxrk88BT9Lvv8QinCZSgw"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "400 Bad Request - Missing body",
+                    "value": {
+                      "message": [
+                        "\"email\" is required",
+                        "\"password\" is required"
+                      ]
+                    }
+                  },
+                  "example-1": {
+                    "summary": "400 - Invalid Email or password",
+                    "value": {
+                      "message": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "test123",
+                  "email": "tess@gmail.com",
+                  "password": "admin123",
+                  "identityType": "ktp",
+                  "identityNumber": "123",
+                  "address": "citra"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "User created successfully",
+                  "data": {
+                    "id": 4,
+                    "name": "test123",
+                    "email": "tests@gmail.com",
+                    "password": "admin123",
+                    "createdAt": "2024-10-28T04:40:19.637Z",
+                    "updatedAt": "2024-10-28T04:40:19.637Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": [
+                    "\"name\" is required",
+                    "\"email\" is required",
+                    "\"password\" is required",
+                    "\"identityType\" is required",
+                    "\"identityNumber\" is required",
+                    "\"address\" is required"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Email already exists"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

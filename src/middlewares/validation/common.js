@@ -15,11 +15,7 @@ export async function validateParamsId(req, res, next) {
 
     next();
   } catch (error) {
-    if (Joi.isError(error)) {
-      const errorMessages = generateJoiErrors(error);
-      return res.status(400).json({ message: errorMessages });
-    }
-
-    res.status(500).json({ message: "Internal server error" });
+    const errorMessages = generateJoiErrors(error);
+    return res.status(400).json({ message: errorMessages });
   }
 }

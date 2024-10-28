@@ -11,8 +11,8 @@ export default (app) => {
 
   router.post(
     "/",
-    transactionValidationMiddleware.createTransactionValidation,
     authMiddleware.isAuthorized,
+    transactionValidationMiddleware.createTransactionValidation,
     accountMiddleware.checkSourceAccountExist,
     accountMiddleware.checkDestinationAccountExist,
     transactionController.createTransaction
@@ -30,8 +30,8 @@ export default (app) => {
 
   router.delete(
     "/:id",
-    commonValidationMiddleware.validateParamsId,
     authMiddleware.isAuthorized,
+    commonValidationMiddleware.validateParamsId,
     transactionController.deleteTransaction
   );
 };
