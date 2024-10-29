@@ -13,12 +13,16 @@ npm run db:reset
 npm run start
 #or
 npm start
-```
 
-Note: to run the sql you need to enstablish connection to your databse first and input it manually ( for now )
+Server is running on port http://localhost:3000
+API documentation is available at http://localhost:3000/api-docs
+```
 
 ## Flowchart
 ![flowchart](./flowchart.png)
 
 ## ERD
 ![erd](./erd.png)
+
+## Test Coverage
+![test](./test.png)
