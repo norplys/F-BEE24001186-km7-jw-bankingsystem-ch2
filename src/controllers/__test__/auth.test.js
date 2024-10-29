@@ -64,7 +64,7 @@ describe("authController", () => {
 
       expect(mockResponse.status).toHaveBeenCalledWith(400);
       expect(mockResponse.json).toHaveBeenCalledWith({
-        message: "Invalid email or password",
+        message: "Invalid email",
       });
     });
 
@@ -77,7 +77,7 @@ describe("authController", () => {
 
       expect(mockResponse.status).toHaveBeenCalledWith(400);
       expect(mockResponse.json).toHaveBeenCalledWith({
-        message: "Invalid email or password",
+        message: "Invalid password",
       });
     });
 

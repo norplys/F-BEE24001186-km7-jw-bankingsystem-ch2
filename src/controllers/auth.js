@@ -8,13 +8,13 @@ export async function login(req, res) {
     const user = await service.getUserByEmail(email);
 
     if (!user) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid email" });
     }
 
     const isValid = await service.comparePassword(password, user.password);
 
     if (!isValid) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid password" });
     }
 
     const token = jwt.sign({ id: user.id }, "secret", {
