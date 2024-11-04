@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import express, { json } from "express";
 import routes from "./routes/index.js";
 import swaggerUi from "swagger-ui-express";
-import swaggerDocument from "./swagger.json" assert {type: "json"};
+import swaggerDocument from "./swagger.json" with { type: "json" };
 
 async function main() {
   const app = express();
