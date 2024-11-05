@@ -4,6 +4,7 @@ import users from "./users.js";
 import transactions from "./transactions.js";
 import profiles from "./profiles.js";
 import auth from "./auth.js";
+import upload from "./upload.js";
 
 export default (app) => {
     const router = Router();
@@ -15,4 +16,5 @@ export default (app) => {
     transactions(router);
     profiles(router);
     auth(router);
+    upload(router);
 }
