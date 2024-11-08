@@ -37,7 +37,7 @@ on:
 env:
   PROJECT_ID: 'binar-be-challange' # TODO: update to your Google Cloud project ID
   REGION: 'asia-east1' # TODO: update to your region
-  SERVICE: 'githubaction' # TODO: update to your service name
+  SERVICE: 'test1' # TODO: update to your service name
 
 jobs:
   deploy:
