@@ -26,6 +26,7 @@ model Profile {
   identityType   String @map("identity_type")
   identityNumber String @map("identity_number")
   address        String
+  image          String?
 
   userId Int @unique @map("user_id")
 

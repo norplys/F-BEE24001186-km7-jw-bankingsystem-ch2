@@ -4,7 +4,8 @@ import { generateJoiErrors } from "../../utils/helper.js";
 const updateProfileSchema = Joi.object({
   identityType: Joi.string().optional(),
   identityNumber: Joi.string().optional(),
-  address: Joi.string().optional()
+  address: Joi.string().optional(),
+  image: Joi.string().optional()
 });
 
 export async function updateProfileValidation(req, res, next) {
