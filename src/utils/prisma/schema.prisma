@@ -7,65 +7,77 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           Int           @id @default(autoincrement())
+model Users {
+  id           Int            @id @default(autoincrement())
   name         String
-  email        String        @unique
+  email        String         @unique
   password     String
-  bank_account BankAccount[]
-  profile      Profile?
+  bank_account BankAccounts[]
+  profile      Profiles?
+  token        Tokens?
 
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamptz()
 
-  @@map("user")
+  @@map("users")
 }
 
-model Profile {
-  id             Int    @id @default(autoincrement())
-  identityType   String @map("identity_type")
-  identityNumber String @map("identity_number")
+model Tokens {
+  id        Int      @id @default(autoincrement())
+  token     String   @db.Uuid
+  expiredAt DateTime @default(now())
+  userId    Int      @unique @map("user_id")
+
+  user Users @relation(fields: [userId], references: [id])
+
+  @@map("tokens")
+}
+
+model Profiles {
+  id             Int     @id @default(autoincrement())
+  identityType   String  @map("identity_type")
+  identityNumber String  @map("identity_number")
   address        String
   image          String?
 
   userId Int @unique @map("user_id")
 
-  user User @relation(fields: [userId], references: [id])
+  user Users @relation(fields: [userId], references: [id])
 
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamptz()
 
   @@map("profiles")
 }
 
-model BankAccount {
+model BankAccounts {
   id                Int    @id @default(autoincrement())
   bankName          String @map("bank_name")
   bankAccountNumber String @unique @map("bank_account_number")
   balance           Float  @default(0)
 
-  userId  Int           @map("user_id")
-  user    User          @relation(fields: [userId], references: [id])
-  send    Transaction[] @relation("sentTransactions")
-  receive Transaction[] @relation("receivedTransactions")
+  userId  Int            @map("user_id")
+  user    Users          @relation(fields: [userId], references: [id])
+  send    Transactions[] @relation("sentTransactions")
+  receive Transactions[] @relation("receivedTransactions")
 
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamptz()
 
-  @@map("bank_account")
+  @@map("bank_accounts")
 }
 
-model Transaction {
+model Transactions {
   id     Int   @id @default(autoincrement())
   amount Float
 
-  sourceAccountId      Int         @map("source_account_id")
-  destinationAccountId Int         @map("destination_account_id")
-  source_account       BankAccount @relation("sentTransactions", fields: [sourceAccountId], references: [id])
-  destination_account  BankAccount @relation("receivedTransactions", fields: [destinationAccountId], references: [id])
+  sourceAccountId      Int          @map("source_account_id")
+  destinationAccountId Int          @map("destination_account_id")
+  source_account       BankAccounts @relation("sentTransactions", fields: [sourceAccountId], references: [id])
+  destination_account  BankAccounts @relation("receivedTransactions", fields: [destinationAccountId], references: [id])
 
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamptz()
 
-  @@map("transaction")
+  @@map("transactions")
 }
