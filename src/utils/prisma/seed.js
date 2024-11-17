@@ -2,7 +2,7 @@ import { prisma } from "../db.js";
 import { generateBankAccountNumber } from "../helper.js";
 
 async function seed() {
-    const user = await prisma.user.create({
+    const user = await prisma.users.create({
         data: {
         email: "test@gmail.com",
         password: "password",
@@ -10,7 +10,7 @@ async function seed() {
 }
 });
 
-await prisma.bankAccount.create({
+await prisma.bankAccounts.create({
     data: {
     balance: 1000000,
     userId: user.id,

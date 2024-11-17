@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 import "./instrument.js";
+import { createServer } from 'http';
+import socket from "./utils/socket.js";
 import errorHandler from "./middlewares/error.js";
 import * as Sentry from "@sentry/node";
 import morgan from "morgan";
@@ -10,12 +12,15 @@ import swaggerDocument from "./swagger.json" with { type: "json" };
 
 async function main() {
   const app = express();
+  const server = createServer(app);
   const port = process.env.PORT || 3000;
   
   app.use(json());
   app.use(morgan('combined'));
 
   routes(app);
+
+  socket(app, server)
 
   errorHandler(app);
 
@@ -28,7 +33,7 @@ async function main() {
   Sentry.setupExpressErrorHandler(app);
   
 
-  app.listen(port, () => {
+  server.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
     console.log(`API documentation is available at http://localhost:${port}/api-docs`);
   });

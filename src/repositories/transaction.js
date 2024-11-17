@@ -1,17 +1,17 @@
 import { prisma } from "../utils/db.js";
 
 export function createTransaction(data, transaction) {
-    return transaction.transaction.create({
+    return transaction.transactions.create({
         data,
     });
 }
 
 export function getAllTransactions() {
-    return prisma.transaction.findMany();
+    return prisma.transactions.findMany();
 }
 
 export function getTransactionById(id) {
-    return prisma.transaction.findUnique({
+    return prisma.transactions.findUnique({
         where: {
             id,
         },
@@ -23,7 +23,7 @@ export function getTransactionById(id) {
 }
 
 export function deleteTransaction(id) {
-    return prisma.transaction.delete({
+    return prisma.transactions.delete({
         where: {
             id,
         },
