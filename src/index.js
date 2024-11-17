@@ -1,4 +1,7 @@
 /* eslint-disable no-console */
+import "./instrument.js";
+import * as Sentry from "@sentry/node";
+import morgan from "morgan";
 import express, { json } from "express";
 import routes from "./routes/index.js";
 import swaggerUi from "swagger-ui-express";
@@ -8,12 +11,19 @@ async function main() {
   const app = express();
   const port = process.env.PORT || 3000;
   
-  
   app.use(json());
+  app.use(morgan('combined'));
 
   routes(app);
 
+  app.get("/debug-sentry", function mainHandler(req, res) {
+    throw new Error("My first Sentry error!");
+  });
+
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+  Sentry.setupExpressErrorHandler(app);
+  
 
   app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
