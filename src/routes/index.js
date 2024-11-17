@@ -7,6 +7,10 @@ import auth from "./auth.js";
 import upload from "./upload.js";
 
 export default (app) => {
+    app.get("/" , (req, res) => {
+        res.send("Ping Successfully!");
+    });
+
     const router = Router();
 
     app.use("/api/v1", router);

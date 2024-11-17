@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import "./instrument.js";
+import errorHandler from "./middlewares/error.js";
 import * as Sentry from "@sentry/node";
 import morgan from "morgan";
 import express, { json } from "express";
@@ -15,6 +16,8 @@ async function main() {
   app.use(morgan('combined'));
 
   routes(app);
+
+  errorHandler(app);
 
   app.get("/debug-sentry", function mainHandler(req, res) {
     throw new Error("My first Sentry error!");
