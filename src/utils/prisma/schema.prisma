@@ -14,7 +14,7 @@ model Users {
   password     String
   bank_account BankAccounts[]
   profile      Profiles?
-  token        Tokens?
+  token        Tokens[]
 
   createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamptz()
