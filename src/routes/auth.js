@@ -29,4 +29,10 @@ export default (app) => {
     userMiddleware.checkEmailExist,
     authController.resetPasswordRequest
   )
+
+  router.put(
+    "/reset-password",
+    authValidationMiddleware.resetPasswordValidation,
+    authController.resetPassword
+  )
 };

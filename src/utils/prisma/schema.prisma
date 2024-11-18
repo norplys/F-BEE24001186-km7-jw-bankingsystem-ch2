@@ -25,8 +25,8 @@ model Users {
 model Tokens {
   id        Int      @id @default(autoincrement())
   token     String   @db.Uuid
-  expiredAt DateTime @default(now())
-  userId    Int      @unique @map("user_id")
+  expiredAt DateTime? @default(now())
+  userId    Int      @map("user_id")
 
   user Users @relation(fields: [userId], references: [id])
 

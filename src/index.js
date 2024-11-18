@@ -22,8 +22,6 @@ async function main() {
 
   socket(app, server)
 
-  errorHandler(app);
-
   app.get("/debug-sentry", function mainHandler(req, res) {
     throw new Error("My first Sentry error!");
   });
@@ -31,7 +29,8 @@ async function main() {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   Sentry.setupExpressErrorHandler(app);
-  
+
+  errorHandler(app);
 
   server.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);

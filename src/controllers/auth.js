@@ -2,6 +2,7 @@ import { UserService } from "../services/user.js";
 import { TokenService } from "../services/token.js";
 import jwt from "jsonwebtoken";
 import { sendResetPasswordEmail } from "../utils/email/mail.js";
+import { HttpError } from "../utils/error.js";
 
 export async function login(req, res) {
   const { email, password } = req.body;
@@ -44,4 +45,22 @@ export async function resetPasswordRequest(_req, res) {
   await sendResetPasswordEmail(email, token.token);
 
   res.status(201).json({ message: "Token created successfully", data: token });
+}
+
+export async function resetPassword(req, res){
+  const { token, password } = req.body;
+
+  const tokenService = new TokenService();
+
+  const tokenExist = await tokenService.getNotExpiredToken(token);
+
+  if(!tokenExist){
+
+    return res.status(400).json({ message: "Invalid token" });
+
+  }
+
+  await tokenService.updateResetPasswordToken(tokenExist.id, password);
+
+  res.status(200).json({message: "Password updated successfully"});
 }
