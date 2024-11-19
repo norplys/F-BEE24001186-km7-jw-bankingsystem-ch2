@@ -3,7 +3,7 @@ import { describe, jest } from "@jest/globals";
 jest.unstable_mockModule("../../utils/db.js", () => {
     return {
         prisma: {
-            transaction: {
+            transactions: {
                 create: jest.fn(),
                 findMany: jest.fn(),
                 findUnique: jest.fn(),
@@ -26,12 +26,12 @@ describe("Transaction Repository", () => {
                 amount: 1000,
             };
             const transaction = {
-                transaction: {
+                transactions: {
                     create: jest.fn(),
                 },
             };
             await transactionRepository.createTransaction(data, transaction);
-            expect(transaction.transaction.create).toHaveBeenCalledWith({
+            expect(transaction.transactions.create).toHaveBeenCalledWith({
                 data,
             });
         });
@@ -40,7 +40,7 @@ describe("Transaction Repository", () => {
     describe("getAllTransactions", () => {
         it("should call prisma.transaction.findMany", async () => {
             await transactionRepository.getAllTransactions();
-            expect(prisma.transaction.findMany).toHaveBeenCalled();
+            expect(prisma.transactions.findMany).toHaveBeenCalled();
         });
     });
 
@@ -48,7 +48,7 @@ describe("Transaction Repository", () => {
         it("should call prisma.transaction.findUnique with correct id", async () => {
             const id = 1;
             await transactionRepository.getTransactionById(id);
-            expect(prisma.transaction.findUnique).toHaveBeenCalledWith({
+            expect(prisma.transactions.findUnique).toHaveBeenCalledWith({
                 where: {
                     id,
                 },
@@ -64,7 +64,7 @@ describe("Transaction Repository", () => {
         it("should call prisma.transaction.delete with correct id", async () => {
             const id = 1;
             await transactionRepository.deleteTransaction(id);
-            expect(prisma.transaction.delete).toHaveBeenCalledWith({
+            expect(prisma.transactions.delete).toHaveBeenCalledWith({
                 where: {
                     id,
                 },

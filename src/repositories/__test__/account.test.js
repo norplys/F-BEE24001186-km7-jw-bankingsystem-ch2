@@ -3,7 +3,7 @@ import { describe, jest } from "@jest/globals";
 jest.unstable_mockModule("../../utils/db.js", () => {
     return {
         prisma: {
-            bankAccount: {
+            bankAccounts: {
                 create: jest.fn(),
                 findMany: jest.fn(),
                 findUnique: jest.fn(),
@@ -26,7 +26,7 @@ describe("Account Repository", () => {
                 id: 1,
             };
             await accountRepository.createAccount(data);
-            expect(prisma.bankAccount.create).toHaveBeenCalledWith({
+            expect(prisma.bankAccounts.create).toHaveBeenCalledWith({
                 data: {
                     bankName: data.bankName,
                     bankAccountNumber: data.bankAccountNumber,
@@ -39,7 +39,7 @@ describe("Account Repository", () => {
     describe("getAllAccount", () => {
         it("should call prisma.bankAccount.findMany", async () => {
             await accountRepository.getAllAccount();
-            expect(prisma.bankAccount.findMany).toHaveBeenCalled();
+            expect(prisma.bankAccounts.findMany).toHaveBeenCalled();
         });
     });
 
@@ -47,7 +47,7 @@ describe("Account Repository", () => {
         it("should call prisma.bankAccount.findUnique with correct id", async () => {
             const id = 1;
             await accountRepository.getAccountById(id);
-            expect(prisma.bankAccount.findUnique).toHaveBeenCalledWith({
+            expect(prisma.bankAccounts.findUnique).toHaveBeenCalledWith({
                 where: {
                     id,
                 },
@@ -59,7 +59,7 @@ describe("Account Repository", () => {
         it("should call prisma.bankAccount.findUnique with correct bankAccountNumber", async () => {
             const bankAccountNumber = "1234567890";
             await accountRepository.getAccountByAccountNumber(bankAccountNumber);
-            expect(prisma.bankAccount.findUnique).toHaveBeenCalledWith({
+            expect(prisma.bankAccounts.findUnique).toHaveBeenCalledWith({
                 where: {
                     bankAccountNumber,
                 },
@@ -76,7 +76,7 @@ describe("Account Repository", () => {
                 userId: 1,
             };
             await accountRepository.updateAccountById(id, data);
-            expect(prisma.bankAccount.update).toHaveBeenCalledWith({
+            expect(prisma.bankAccounts.update).toHaveBeenCalledWith({
                 where: {
                     id,
                 },
@@ -90,7 +90,7 @@ describe("Account Repository", () => {
             const userId = 1;
             const bankName = "Bank Name";
             await accountRepository.getAccountByUserIdAndBankName(userId, bankName);
-            expect(prisma.bankAccount.findFirst).toHaveBeenCalledWith({
+            expect(prisma.bankAccounts.findFirst).toHaveBeenCalledWith({
                 where: {
                     userId,
                     bankName,
@@ -107,7 +107,7 @@ describe("Account Repository", () => {
                 userId,
                 bankAccountNumber
             );
-            expect(prisma.bankAccount.findUnique).toHaveBeenCalledWith({
+            expect(prisma.bankAccounts.findUnique).toHaveBeenCalledWith({
                 where: {
                     userId,
                     bankAccountNumber,

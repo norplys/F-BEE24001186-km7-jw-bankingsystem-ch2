@@ -12,7 +12,16 @@ jest.unstable_mockModule("../../services/user.js", () => ({
   })),
 }));
 
+jest.unstable_mockModule("../../utils/socket.js", () => ({
+  io: {
+    emit: jest.fn(), 
+    on: jest.fn(),   
+  },
+}));
+
 const userController = await import("../user.js");
+
+const { io } = await import("../../utils/socket.js");
 
 describe("userController", () => {
   afterEach(() => {
@@ -42,6 +51,7 @@ describe("userController", () => {
   describe("createUser", () => {
     it("should create a user", async () => {
       mockCreateUser.mockResolvedValue(mockAccount);
+      io.emit.mockReturnThis();
 
       await userController.createUser(mockReq, mockRes);
 
