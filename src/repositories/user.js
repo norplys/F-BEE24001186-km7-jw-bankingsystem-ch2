@@ -1,7 +1,7 @@
 import { prisma } from "../utils/db.js";
 
 export function createUser(data) {
-  return prisma.user.create({
+  return prisma.users.create({
     data: {
       name: data.name,
       email: data.email,
@@ -18,11 +18,11 @@ export function createUser(data) {
 }
 
 export function getAllUser() {
-  return prisma.user.findMany();
+  return prisma.users.findMany();
 }
 
 export function getUserById(id) {
-  return prisma.user.findUnique({
+  return prisma.users.findUnique({
     where: {
       id,
     },
@@ -33,9 +33,10 @@ export function getUserById(id) {
 }
 
 export function getUserByEmail(email) {
-  return prisma.user.findUnique({
+  return prisma.users.findUnique({
     where: {
       email,
     },
   });
 }
+

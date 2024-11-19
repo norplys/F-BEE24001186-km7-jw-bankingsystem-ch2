@@ -16,3 +16,19 @@ export async function loginValidation(req, res, next) {
     return res.status(400).json({ message: errorMessages });
   }
 }
+
+const resetPasswordSchema = Joi.object({
+  token: Joi.string().uuid().required(),
+  password: Joi.string().required(),
+});
+
+export async function resetPasswordValidation(req, res, next) {
+  try {
+    await resetPasswordSchema.validateAsync(req.body, { abortEarly: false });
+
+    next();
+  } catch (error) {
+    const errorMessages = generateJoiErrors(error);
+    return res.status(400).json({ message: errorMessages });
+  }
+};

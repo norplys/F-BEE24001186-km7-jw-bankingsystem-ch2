@@ -1,7 +1,7 @@
 import { prisma } from "../utils/db.js";
 
 export function updateProfileByUserId(userId, data) {
-  return prisma.profile.update({
+  return prisma.profiles.update({
     where: {
       userId,
     },

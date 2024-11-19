@@ -19,3 +19,20 @@ export async function validateParamsId(req, res, next) {
     return res.status(400).json({ message: errorMessages });
   }
 }
+
+const emailSchema = Joi.object({
+  email: Joi.string().email().required(),
+});
+
+export async function isValidEmailPayload(req, res, next) {
+  try {
+    const { email } = req.body;
+
+    await emailSchema.validateAsync({ email });
+
+    next();
+  } catch (err) {
+    const errorMessages = generateJoiErrors(err);
+    return res.status(400).json({ message: errorMessages });
+  }
+}

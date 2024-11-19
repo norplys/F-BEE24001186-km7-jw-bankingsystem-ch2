@@ -1,4 +1,5 @@
 import { UserService } from "../services/user.js";
+import { io } from "../utils/socket.js";
 
 export async function createUser(req, res) {
   const payload = req.body;
@@ -6,6 +7,10 @@ export async function createUser(req, res) {
 
   try {
     const user = await service.createUser(payload);
+
+    const message = `a user has been registered with email: ${payload.email}`
+
+    io.emit('notification', message);
 
     res.status(201).json({
       message: "User created successfully",
