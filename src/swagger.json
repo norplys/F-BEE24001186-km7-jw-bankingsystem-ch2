@@ -7,7 +7,10 @@
   },
   "servers": [
     {
-      "url": "http://{{local_host}}"
+      "url": "http://localhost:3000"
+    },
+    {
+      "url": "https://test1-419963954011.asia-east1.run.app"
     }
   ],
   "components": {
@@ -37,6 +40,12 @@
     },
     {
       "name": "Auth"
+    },
+    {
+      "name": "Upload"
+    },
+    {
+      "name": "Notification"
     }
   ],
   "paths": {
@@ -62,41 +71,101 @@
                 "schema": {
                   "type": "object"
                 },
-                "example": {
-                  "data": [
-                    {
-                      "id": 1,
-                      "name": "Test",
-                      "email": "test@gmail.com",
-                      "password": "password",
-                      "createdAt": "2024-10-18T14:22:04.427Z",
-                      "updatedAt": null
-                    },
-                    {
-                      "id": 2,
-                      "name": "izzan",
-                      "email": "izzan@gmail.com",
-                      "password": "admin123",
-                      "createdAt": "2024-10-25T12:52:24.805Z",
-                      "updatedAt": "2024-10-25T12:52:24.805Z"
-                    },
-                    {
-                      "id": 3,
-                      "name": "izzan",
-                      "email": "test1@gmail.com",
-                      "password": "admin123",
-                      "createdAt": "2024-10-28T04:40:02.293Z",
-                      "updatedAt": "2024-10-28T04:40:02.293Z"
-                    },
-                    {
-                      "id": 4,
-                      "name": "test123",
-                      "email": "tests@gmail.com",
-                      "password": "admin123",
-                      "createdAt": "2024-10-28T04:40:19.637Z",
-                      "updatedAt": "2024-10-28T04:40:19.637Z"
+                "examples": {
+                  "example-0": {
+                    "summary": "200 OK - Success",
+                    "value": {
+                      "data": [
+                        {
+                          "id": 1,
+                          "name": "Test",
+                          "email": "test@gmail.com",
+                          "password": "password",
+                          "createdAt": "2024-10-18T14:22:04.427Z",
+                          "updatedAt": null
+                        },
+                        {
+                          "id": 2,
+                          "name": "izzan",
+                          "email": "izzan@gmail.com",
+                          "password": "admin123",
+                          "createdAt": "2024-10-25T12:52:24.805Z",
+                          "updatedAt": "2024-10-25T12:52:24.805Z"
+                        },
+                        {
+                          "id": 3,
+                          "name": "izzan",
+                          "email": "test1@gmail.com",
+                          "password": "admin123",
+                          "createdAt": "2024-10-28T04:40:02.293Z",
+                          "updatedAt": "2024-10-28T04:40:02.293Z"
+                        },
+                        {
+                          "id": 4,
+                          "name": "test123",
+                          "email": "tests@gmail.com",
+                          "password": "admin123",
+                          "createdAt": "2024-10-28T04:40:19.637Z",
+                          "updatedAt": "2024-10-28T04:40:19.637Z"
+                        }
+                      ]
                     }
-                  ]
+                  },
+                  "example-1": {
+                    "summary": "Get All user",
+                    "value": {
+                      "data": [
+                        {
+                          "id": 1,
+                          "name": "Test",
+                          "email": "test@gmail.com",
+                          "password": "password",
+                          "createdAt": "2024-10-18T14:22:04.427Z",
+                          "updatedAt": null
+                        },
+                        {
+                          "id": 2,
+                          "name": "izzan",
+                          "email": "izzan@gmail.com",
+                          "password": "admin123",
+                          "createdAt": "2024-10-25T12:52:24.805Z",
+                          "updatedAt": "2024-10-25T12:52:24.805Z"
+                        },
+                        {
+                          "id": 3,
+                          "name": "izzan",
+                          "email": "test1@gmail.com",
+                          "password": "admin123",
+                          "createdAt": "2024-10-28T04:40:02.293Z",
+                          "updatedAt": "2024-10-28T04:40:02.293Z"
+                        },
+                        {
+                          "id": 4,
+                          "name": "test123",
+                          "email": "tests@gmail.com",
+                          "password": "admin123",
+                          "createdAt": "2024-10-28T04:40:19.637Z",
+                          "updatedAt": "2024-10-28T04:40:19.637Z"
+                        },
+                        {
+                          "id": 5,
+                          "name": "test123",
+                          "email": "tess@gmail.com",
+                          "password": "$2b$10$7LV74zB3yTziZeXqEZyz7eahB2VQ.EWiCka2BsaLbdCMSzQ3NnSva",
+                          "createdAt": "2024-10-28T16:11:19.106Z",
+                          "updatedAt": "2024-10-28T16:11:19.106Z"
+                        },
+                        {
+                          "id": 6,
+                          "name": "test123",
+                          "email": "tess3@gmail.com",
+                          "password": "$2b$10$ru7LjusRy/nArRQdryodJ.R1u2nHjMbi.fvDub1nqVSzJTMBZoujK",
+                          "createdAt": "2024-10-29T12:21:41.470Z",
+                          "updatedAt": "2024-10-29T12:21:41.470Z"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -438,9 +507,10 @@
             "name": "id",
             "in": "path",
             "schema": {
-              "type": "string"
+              "type": "integer"
             },
-            "required": true
+            "required": true,
+            "example": "1"
           }
         ],
         "responses": {
@@ -1281,8 +1351,8 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "email": "tess@gmail.com",
-                  "password": "admin123"
+                  "email": "joywinata88@gmail.com",
+                  "password": "test"
                 }
               }
             }
@@ -1375,7 +1445,7 @@
                 "type": "object",
                 "example": {
                   "name": "test123",
-                  "email": "tess3@gmail.com",
+                  "email": "joywiata88@gmail.com",
                   "password": "admin123",
                   "identityType": "ktp",
                   "identityNumber": "123",
@@ -1462,6 +1532,108 @@
                   "message": "Email already exists"
                 }
               }
+            }
+          }
+        }
+      }
+    },
+    "/auth/reset-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "reset-password",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "joywinata88@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "reset-password",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "token": "2b485342-b016-43ae-83b2-20047560fed9",
+                  "password": "test"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/upload": {
+      "post": {
+        "tags": [
+          "Upload"
+        ],
+        "summary": "New Request",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "client-notification",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
             }
           }
         }
