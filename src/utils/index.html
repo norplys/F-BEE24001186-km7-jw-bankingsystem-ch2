@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notif</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main class="h-screen w-screen flex justify-center items-center bg-black text-white">
+      <div class="min-h-64 min-w-64 bg-white bg-opacity-20 rounded-md">
+      <h1 class="text-sm font-bold text-center border-b py-2">Notif</h1>
+      <ul id="notifications" class="text-sm list-none p-2"></ul>
+      </div>
+    </main>
+    <script>
+      const socket = io();
+      const notifications = document.getElementById("notifications");
+
+      socket.on("connect", () => {
+        console.log("Connected to server");
+      });
+
+      socket.on("notification", (message) => {
+
+        const li = document.createElement("li");
+
+        li.textContent = message;
+
+        notifications.appendChild(li);
+      });
+    </script>
+  </body>
+</html>

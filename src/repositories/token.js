@@ -29,6 +29,9 @@ export function getUserTokenThatNotExpiredByToken(token){
           expiredAt: {
             gt: new Date()
           }
+      },
+      include: {
+        user: true
       }
   })
 }

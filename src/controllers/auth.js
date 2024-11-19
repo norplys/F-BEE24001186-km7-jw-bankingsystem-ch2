@@ -2,7 +2,7 @@ import { UserService } from "../services/user.js";
 import { TokenService } from "../services/token.js";
 import jwt from "jsonwebtoken";
 import { sendResetPasswordEmail } from "../utils/email/mail.js";
-import { HttpError } from "../utils/error.js";
+import { io } from "../utils/socket.js";
 
 export async function login(req, res) {
   const { email, password } = req.body;
@@ -61,6 +61,10 @@ export async function resetPassword(req, res){
   }
 
   await tokenService.updateResetPasswordToken(tokenExist.id, password);
+
+  const message = `a user password has been reset with email: ${tokenExist.user.email}`
+
+  io.emit('notification', message);
 
   res.status(200).json({message: "Password updated successfully"});
 }
