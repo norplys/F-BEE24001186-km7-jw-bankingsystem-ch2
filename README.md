@@ -1,3 +1,9 @@
+## Notification
+https://test1-419963954011.asia-east1.run.app/
+
+## API Documentation
+https://test1-419963954011.asia-east1.run.app/api-docs
+
 ## Getting Started
 
 How to run this project
