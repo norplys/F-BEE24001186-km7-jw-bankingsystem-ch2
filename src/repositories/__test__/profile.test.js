@@ -3,7 +3,7 @@ import { describe, jest } from "@jest/globals";
 jest.unstable_mockModule("../../utils/db.js", () => {
     return {
         prisma: {
-            profile: {
+            profiles: {
                 update: jest.fn(),
             },
         },
@@ -24,7 +24,7 @@ describe("Profile Repository", () => {
                 address: "Jalan Raya",
             };
             await updateProfileByUserId(userId, data);
-            expect(prisma.profile.update).toHaveBeenCalledWith({
+            expect(prisma.profiles.update).toHaveBeenCalledWith({
                 where: {
                     userId,
                 },

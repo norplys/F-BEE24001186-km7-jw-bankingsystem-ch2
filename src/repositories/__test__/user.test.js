@@ -3,7 +3,7 @@ import { describe, jest } from "@jest/globals";
 jest.unstable_mockModule("../../utils/db.js", () => {
   return {
     prisma: {
-      user: {
+      users: {
         create: jest.fn(),
         findMany: jest.fn(),
         findUnique: jest.fn(),
@@ -29,7 +29,7 @@ describe("User Repository", () => {
         address: "Jalan Raya",
       };
       await userRepository.createUser(data);
-      expect(prisma.user.create).toHaveBeenCalledWith({
+      expect(prisma.users.create).toHaveBeenCalledWith({
         data: {
           name: data.name,
           email: data.email,
@@ -49,7 +49,7 @@ describe("User Repository", () => {
   describe("getAllUser", () => {
     it("should call prisma.user.findMany", async () => {
       await userRepository.getAllUser();
-      expect(prisma.user.findMany).toHaveBeenCalled();
+      expect(prisma.users.findMany).toHaveBeenCalled();
     });
   });
 
@@ -57,7 +57,7 @@ describe("User Repository", () => {
     it("should call prisma.user.findUnique with correct id", async () => {
       const id = 1;
       await userRepository.getUserById(id);
-      expect(prisma.user.findUnique).toHaveBeenCalledWith({
+      expect(prisma.users.findUnique).toHaveBeenCalledWith({
         where: {
           id,
         },
@@ -73,7 +73,7 @@ describe("User Repository", () => {
       const email = "test@gmail.com";
       await userRepository.getUserByEmail(email);
 
-      expect(prisma.user.findUnique).toHaveBeenCalledWith({
+      expect(prisma.users.findUnique).toHaveBeenCalledWith({
         where: {
           email,
         },
